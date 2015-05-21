@@ -1,0 +1,11 @@
+@(message: String)
+
+@flash.get("error")
+	
+    @helper.form(routes.Application.output(),'id->"nameForm") {
+							<h3>Enter mathematical expression: </h3>
+							<br>
+							<input type="text" value="" id="expression" name="expression" required/>
+							<br>
+							<input type="submit" value="Submit" />
+	}
