@@ -34,6 +34,8 @@ public class Application extends Controller {
 			return ok(index.render(""));
 		}else{
 			MathCal mathCal = new MathCal(expression);
+			mathCal.setExpression(expression);
+			mathCal.save();
 			int number = mathCal.getIntResult(expression);
 			String words = mathCal.getStringResult(number);
 			return ok(result.render(expression, number, words));

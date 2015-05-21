@@ -1,7 +1,14 @@
 package models;
 
-public class MathCal {
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import play.db.ebean.Model;
+
+@Entity	
+public class MathCal extends Model{
 	
+	@OneToOne
 	private String expression;
 	
 	private String[] singleNum = {" one"," two"," three"," four"," five"," six"," seven",
@@ -12,7 +19,7 @@ public class MathCal {
 	  };
 
 	public MathCal(){
-		this.expression = "0";	
+		this.expression = "1";	
 	}
 	
 	public MathCal(String expression){
@@ -37,7 +44,7 @@ public class MathCal {
 	public int getIntResult(String expression){
 		int num = 0;
 		try {
-			if(expression.contains("+") || expression.contains("-")){
+			if(expression.contains("+") || expression.contains("-") || expression.contains("*")){
 				for (int i=0; i<expression.length(); i++){
 					if(expression.charAt(i)=='+'){
 						num = Integer.parseInt(expression.substring(0, i)) + Integer.parseInt(expression.substring(i+1, expression.length()));
